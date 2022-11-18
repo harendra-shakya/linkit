@@ -7,7 +7,7 @@ declare var window: any;
 
 export default function Main(): JSX.Element {
     const [isDisabled, setIsDisabled] = useState(false);
-    const [price, setPrice] = useState<number>();
+    const [price, setPrice] = useState<string>();
 
     const fetchBalance = async function (name: string) {
         setIsDisabled(true);
@@ -17,7 +17,7 @@ export default function Main(): JSX.Element {
         const contract = await new ethers.Contract(address, linkitAbi, signer);
         const data = await contract.getLatestPrice(name);
         const _price = parseInt(data[0]) / 10 ** parseInt(data[1]);
-        setPrice(_price);
+        setPrice("$" + _price.toString());
         setIsDisabled(false);
     };
 
