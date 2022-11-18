@@ -1,5 +1,6 @@
 import { useMoralis } from "react-moralis";
 import Main from "../components/Main";
+import style from "../styles/Home.module.css";
 
 export default function Home(): JSX.Element {
     const { isWeb3Enabled, chainId, account } = useMoralis();
@@ -7,7 +8,7 @@ export default function Home(): JSX.Element {
     return (
         <div>
             {isWeb3Enabled ? (
-                <div>
+                <div className={`${style.bgImg}`}>
                     {parseInt(chainId!) === 80001 ? (
                         <div>
                             <Main />
